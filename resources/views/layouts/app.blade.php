@@ -1,36 +1,61 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Dinamisks lapas nosaukums -->
+    <title>{{ $title ?? 'TeamManager Dashboard' }}</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+    <!-- Iekļauj Tailwind CSS izmantojot Vite -->
+    @vite('resources/css/app.css')
+</head>
+<body class="font-sans bg-gray-100">
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-            @include('layouts.navigation')
-
-            <!-- Page Heading -->
-            @isset($header)
-                <header class="bg-white dark:bg-gray-800 shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endisset
-
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+    <!-- Navigācijas josla -->
+    <nav class="bg-white p-4 flex justify-between items-center sticky top-0 z-50 shadow-md">
+        <!-- Kreisajā pusē - mājas saite -->
+        <div class="flex space-x-4">
+            <a href="{{ url('/dashboard') }}" class="font-bold text-xl transition duration-300">
+                TeamManager
+            </a>
         </div>
-    </body>
+
+        <!-- Labajā pusē - lietotāja izvēlne -->
+        <div class="flex space-x-4 ml-auto">
+            <!-- Profila saite -->
+            <a href="{{ url('/profile') }}" class="text-gray-600 hover:text-gray-900 transition duration-300">Profils</a>
+
+            @auth
+                @if(Auth::user()->role == 1) 
+                    <!-- Ja lietotājs ir spēlētājs -->
+                    <a href="{{ url('/practices') }}" class="text-gray-600 hover:text-gray-900 transition duration-300">Grafiks</a>
+                    <a href="{{ route('player.payments') }}" class="text-gray-600 hover:text-gray-900 transition duration-300">Maksājumi</a>
+                @elseif(Auth::user()->role == 0) 
+                    <!-- Ja lietotājs ir treneris -->
+                    <a href="{{ url('/manage-team') }}" class="text-gray-600 hover:text-gray-900 transition duration-300">Pārvaldīt komandu</a>
+                    <a href="{{ url('/practices') }}" class="text-gray-600 hover:text-gray-900 transition duration-300">Grafiks</a>
+                    <a href="{{ route('coach.payments') }}" class="text-gray-600 hover:text-gray-900 transition duration-300">Maksājumi</a>
+                @endif
+            @endauth
+
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                    Izrakstīties
+                </button>
+            </form>
+        </div>
+    </nav>
+
+    <!-- Galvenais saturs -->
+    <div class="container mx-auto p-8">
+        @yield('content')
+    </div>
+
+    <!-- Kājene -->
+    @include('footer')
+
+</body>
 </html>

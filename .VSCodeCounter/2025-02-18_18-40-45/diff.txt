@@ -1,0 +1,41 @@
+Date : 2025-02-18 18:40:45
+Directory : c:\wamp64\www\PK\database
+Total : 12 files,  232 codes, 69 comments, 45 blanks, all 346 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| PHP      |         12 |        232 |         69 |         45 |        346 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                  | files      | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                     |         12 |        232 |         69 |         45 |        346 |
+| ..                                                                                    |          2 |        -19 |         -2 |         -5 |        -26 |
+| ..\bootstrap                                                                          |          2 |        -19 |         -2 |         -5 |        -26 |
+| factories                                                                             |          1 |         25 |         14 |          6 |         45 |
+| migrations                                                                            |          8 |        212 |         52 |         39 |        303 |
+| seeders                                                                               |          1 |         14 |          5 |          5 |         24 |
++---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++---------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                              | language | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| c:\wamp64\www\PK\bootstrap\app.php                                                    | PHP      |        -14 |         -2 |         -3 |        -19 |
+| c:\wamp64\www\PK\bootstrap\providers.php                                              | PHP      |         -5 |          0 |         -2 |         -7 |
+| c:\wamp64\www\PK\database\factories\UserFactory.php                                   | PHP      |         25 |         14 |          6 |         45 |
+| c:\wamp64\www\PK\database\migrations\0001_01_01_000000_create_users_table.php         | PHP      |         39 |          6 |          7 |         52 |
+| c:\wamp64\www\PK\database\migrations\0001_01_01_000001_create_cache_table.php         | PHP      |         25 |          6 |          5 |         36 |
+| c:\wamp64\www\PK\database\migrations\0001_01_01_000002_create_jobs_table.php          | PHP      |         46 |          6 |          6 |         58 |
+| c:\wamp64\www\PK\database\migrations\2025_01_17_120051_add_role_to_users_table.php    | PHP      |         19 |          7 |          4 |         30 |
+| c:\wamp64\www\PK\database\migrations\2025_02_01_144130_create_teams_table.php         | PHP      |         19 |          6 |          4 |         29 |
+| c:\wamp64\www\PK\database\migrations\2025_02_01_144208_add_team_id_to_users_table.php | PHP      |         22 |          9 |          5 |         36 |
+| c:\wamp64\www\PK\database\migrations\2025_02_01_165739_create_feedback_table.php      | PHP      |         21 |          6 |          4 |         31 |
+| c:\wamp64\www\PK\database\migrations\2025_02_01_170344_create_practices_table.php     | PHP      |         21 |          6 |          4 |         31 |
+| c:\wamp64\www\PK\database\seeders\DatabaseSeeder.php                                  | PHP      |         14 |          5 |          5 |         24 |
+| Total                                                                                 |          |        232 |         69 |         45 |        346 |
++---------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+

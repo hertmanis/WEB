@@ -1,0 +1,12 @@
+"filename", "language", "PHP", "comment", "blank", "total"
+"c:\wamp64\www\PK\database\factories\UserFactory.php", "PHP", 25, 14, 6, 45
+"c:\wamp64\www\PK\database\migrations\0001_01_01_000000_create_users_table.php", "PHP", 39, 6, 7, 52
+"c:\wamp64\www\PK\database\migrations\0001_01_01_000001_create_cache_table.php", "PHP", 25, 6, 5, 36
+"c:\wamp64\www\PK\database\migrations\0001_01_01_000002_create_jobs_table.php", "PHP", 46, 6, 6, 58
+"c:\wamp64\www\PK\database\migrations\2025_01_17_120051_add_role_to_users_table.php", "PHP", 19, 7, 4, 30
+"c:\wamp64\www\PK\database\migrations\2025_02_01_144130_create_teams_table.php", "PHP", 19, 6, 4, 29
+"c:\wamp64\www\PK\database\migrations\2025_02_01_144208_add_team_id_to_users_table.php", "PHP", 22, 9, 5, 36
+"c:\wamp64\www\PK\database\migrations\2025_02_01_165739_create_feedback_table.php", "PHP", 21, 6, 4, 31
+"c:\wamp64\www\PK\database\migrations\2025_02_01_170344_create_practices_table.php", "PHP", 21, 6, 4, 31
+"c:\wamp64\www\PK\database\seeders\DatabaseSeeder.php", "PHP", 14, 5, 5, 24
+"Total", "-", 251, 71, 50, 372

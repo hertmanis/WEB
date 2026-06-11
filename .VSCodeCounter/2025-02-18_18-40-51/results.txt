@@ -1,0 +1,67 @@
+Date : 2025-02-18 18:40:51
+Directory : c:\wamp64\www\PK\public
+Total : 21 files,  255 codes, 237 comments, 58 blanks, all 550 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JavaScript |         17 |        243 |        186 |         52 |        481 |
+| PHP        |          1 |          9 |          3 |          6 |         18 |
+| CSS        |          3 |          3 |         48 |          0 |         51 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                   |         21 |        255 |        237 |         58 |        550 |
+| . (Files)                                                                           |          1 |          9 |          3 |          6 |         18 |
+| css                                                                                 |          3 |          3 |         48 |          0 |         51 |
+| css\filament                                                                        |          3 |          3 |         48 |          0 |         51 |
+| css\filament\filament                                                               |          1 |          1 |          0 |          0 |          1 |
+| css\filament\forms                                                                  |          1 |          1 |         48 |          0 |         49 |
+| css\filament\support                                                                |          1 |          1 |          0 |          0 |          1 |
+| js                                                                                  |         17 |        243 |        186 |         52 |        481 |
+| js\filament                                                                         |         17 |        243 |        186 |         52 |        481 |
+| js\filament\filament                                                                |          2 |          2 |         12 |          2 |         16 |
+| js\filament\forms                                                                   |          9 |        217 |         93 |         34 |        344 |
+| js\filament\forms\components                                                        |          9 |        217 |         93 |         34 |        344 |
+| js\filament\notifications                                                           |          1 |          1 |          0 |          1 |          2 |
+| js\filament\support                                                                 |          2 |         16 |         21 |         12 |         49 |
+| js\filament\tables                                                                  |          1 |          1 |          0 |          1 |          2 |
+| js\filament\tables\components                                                       |          1 |          1 |          0 |          1 |          2 |
+| js\filament\widgets                                                                 |          2 |          6 |         60 |          2 |         68 |
+| js\filament\widgets\components                                                      |          2 |          6 |         60 |          2 |         68 |
+| js\filament\widgets\components (Files)                                              |          1 |          3 |         34 |          1 |         38 |
+| js\filament\widgets\components\stats-overview                                       |          1 |          3 |         26 |          1 |         30 |
+| js\filament\widgets\components\stats-overview\stat                                  |          1 |          3 |         26 |          1 |         30 |
++-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                            | language   | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\wamp64\www\PK\public\css\filament\filament\app.css                               | CSS        |          1 |          0 |          0 |          1 |
+| c:\wamp64\www\PK\public\css\filament\forms\forms.css                                | CSS        |          1 |         48 |          0 |         49 |
+| c:\wamp64\www\PK\public\css\filament\support\support.css                            | CSS        |          1 |          0 |          0 |          1 |
+| c:\wamp64\www\PK\public\index.php                                                   | PHP        |          9 |          3 |          6 |         18 |
+| c:\wamp64\www\PK\public\js\filament\filament\app.js                                 | JavaScript |          1 |          0 |          1 |          2 |
+| c:\wamp64\www\PK\public\js\filament\filament\echo.js                                | JavaScript |          1 |         12 |          1 |         14 |
+| c:\wamp64\www\PK\public\js\filament\forms\components\color-picker.js                | JavaScript |          1 |          0 |          1 |          2 |
+| c:\wamp64\www\PK\public\js\filament\forms\components\date-time-picker.js            | JavaScript |          1 |          0 |          1 |          2 |
+| c:\wamp64\www\PK\public\js\filament\forms\components\file-upload.js                 | JavaScript |         38 |         83 |          3 |        124 |
+| c:\wamp64\www\PK\public\js\filament\forms\components\key-value.js                   | JavaScript |          1 |          0 |          1 |          2 |
+| c:\wamp64\www\PK\public\js\filament\forms\components\markdown-editor.js             | JavaScript |         46 |          0 |          6 |         52 |
+| c:\wamp64\www\PK\public\js\filament\forms\components\rich-editor.js                 | JavaScript |        127 |          5 |         19 |        151 |
+| c:\wamp64\www\PK\public\js\filament\forms\components\select.js                      | JavaScript |          1 |          5 |          1 |          7 |
+| c:\wamp64\www\PK\public\js\filament\forms\components\tags-input.js                  | JavaScript |          1 |          0 |          1 |          2 |
+| c:\wamp64\www\PK\public\js\filament\forms\components\textarea.js                    | JavaScript |          1 |          0 |          1 |          2 |
+| c:\wamp64\www\PK\public\js\filament\notifications\notifications.js                  | JavaScript |          1 |          0 |          1 |          2 |
+| c:\wamp64\www\PK\public\js\filament\support\async-alpine.js                         | JavaScript |          1 |          0 |          1 |          2 |
+| c:\wamp64\www\PK\public\js\filament\support\support.js                              | JavaScript |         15 |         21 |         11 |         47 |
+| c:\wamp64\www\PK\public\js\filament\tables\components\table.js                      | JavaScript |          1 |          0 |          1 |          2 |
+| c:\wamp64\www\PK\public\js\filament\widgets\components\chart.js                     | JavaScript |          3 |         34 |          1 |         38 |
+| c:\wamp64\www\PK\public\js\filament\widgets\components\stats-overview\stat\chart.js | JavaScript |          3 |         26 |          1 |         30 |
+| Total                                                                               |            |        255 |        237 |         58 |        550 |
++-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
