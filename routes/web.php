@@ -59,9 +59,6 @@ Route::get('/practices/{practice}', [PracticeController::class, 'show'])->name('
 
 Route::delete('/team/remove-member/{id}', [ManageTeamController::class, 'removeMember'])->name('team.removeMember');
 
-
-
-// Routes for authenticated users only
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
         $user = Auth::user();
@@ -81,15 +78,12 @@ Route::middleware(['auth'])->group(function () {
         }
     })->name('dashboard');
 
-    // Profile management
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // Logout
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
-    // Payment Routes for coach and player
     Route::prefix('coach')->group(function () {
         Route::get('/payments', [PaymentController::class, 'coachIndex'])->name('coach.payments');
         Route::post('/payments', [PaymentController::class, 'store'])->name('coach.payments.store');
@@ -99,7 +93,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/payment/pay/{payment}', [PaymentController::class, 'showPaymentPage'])->name('payment.pay');
 
 
-    // Manage team and practices
     Route::get('/manage-team', [ManageTeamController::class, 'index']);
     Route::get('/practices', [PracticeController::class, 'index'])->name('practices.index');
     Route::get('/practices/create', [PracticeController::class, 'create'])->name('practices.create');
@@ -110,18 +103,6 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/profile/change-password', [ProfileController::class, 'changePassword'])->name('profile.change-password');
 });
 
-// Public pages
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
-
-Route::get('/options', function () {
-    return view('options');
-})->name('options');
-
-Route::get('/prices', function () {
-    return view('prices');
-})->name('prices');
 
 // Include additional default Laravel auth routes
 require __DIR__.'/auth.php';

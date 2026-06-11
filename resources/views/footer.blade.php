@@ -11,9 +11,6 @@
         <h4 class="text-lg font-semibold mb-4">Saites</h4>
         <ul class="text-sm text-gray-400">
           <li class="mb-2"><a href="/" class="hover:text-white transition duration-300">Sākums</a></li>
-          <li class="mb-2"><a href="/options" class="hover:text-white transition duration-300">Iespējas</a></li>
-          <li class="mb-2"><a href="/prices" class="hover:text-white transition duration-300">Cenas</a></li>
-          <li class="mb-2"><a href="/contact" class="hover:text-white transition duration-300">Kontakti</a></li>
         </ul>
       </div>
       <div>
