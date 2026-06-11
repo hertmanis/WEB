@@ -5,7 +5,5 @@
     </a>
   </div>
   <div class="flex space-x-4">
-    <a href="/options" class="text-gray-600 hover:text-gray-900 transition duration-300">Iespējas</a>
-    <a href="/prices" class="text-gray-600 hover:text-gray-900 transition duration-300">Cenas</a>
   </div>
 </nav>

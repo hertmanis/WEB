@@ -64,15 +64,18 @@ public function showPaymentPage($paymentId)
 {
     $payment = Payment::findOrFail($paymentId);
 
-    // Autentificēts lietotājs
+    // Autentificēts lietotājs (spēlētājs)
     $user = auth()->user();
 
-    if ($user->team_id !== $payment->team_id) {
+    // Atrodam treneri, kurš izveidoja šo maksājumu
+    $creator = \App\Models\User::find($payment->created_by);
+
+    // Ja treneris neeksistē vai viņa komanda nesakrīt ar spēlētāja komandu, bloķē
+    if (!$creator || $user->team_id !== $creator->team_id) {
         abort(403, 'Jums nav piekļuves šim maksājumam.');
     }
 
     return view('dashboard.payment.pay', compact('payment'));
-
 }
 
 
