@@ -2,12 +2,12 @@
 
 @section('content')
     <h1 class="text-3xl font-semibold text-center mb-8">
-        Aktivitāšu grafiks
+        {{ __('Aktivitāšu grafiks') }}
     </h1>
 
     <div class="flex justify-end mb-4">
         <a href="{{ route('practices.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            + Pievienot aktivitāti
+            + {{ __('Pievienot aktivitāti') }}
         </a>
     </div>
 
@@ -27,20 +27,15 @@
             const calendarEl = document.getElementById('calendar');
 
             const calendar = new FullCalendar.Calendar(calendarEl, {
-                locale: 'lv', // <- Latviešu valoda
+                // Dinamiski iestatām aplikācijas valodu kalendāram (lv vai en)
+                locale: '{{ app()->getLocale() }}', 
                 initialView: 'dayGridMonth',
                 headerToolbar: {
                     left: 'prev,next today',
                     center: 'title',
                     right: 'dayGridMonth,timeGridWeek,timeGridDay'
                 },
-                buttonText: {
-                    today: 'Šodien',
-                    month: 'Mēnesis',
-                    week: 'Nedēļa',
-                    day: 'Diena',
-                    list: 'Saraksts'
-                },
+                // Šīs pogas FullCalendar pārtulkos pats, pateicoties locales-all skriptam un mainīgajam locale
                 events: {!! json_encode($practices->map(function($practice) {
                     return [
                         'title' => $practice->title,
@@ -53,7 +48,6 @@
                 })) !!},
                 eventClick: function(info) {
                     const practiceId = info.event.id;
-                    // Novirza uz jaunu lapu ar aktivitātes detalizētu informāciju
                     window.location.href = `/practices/${practiceId}`; 
                 }
             });
@@ -66,7 +60,7 @@
         <div class="bg-white rounded p-6 max-w-md w-full relative">
             <div id="infoModalContent" class="text-sm leading-relaxed"></div>
             <button onclick="document.getElementById('infoModal').classList.add('hidden')"
-                    class="absolute top-2 right-2 text-gray-600 font-bold">X</button>
+                    class="absolute top-2 right-2 text-gray-600 font-bold" aria-label="{{ __('Aizvērt') }}">X</button>
         </div>
     </div>
 

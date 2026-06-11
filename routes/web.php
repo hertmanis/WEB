@@ -13,6 +13,18 @@ use App\Http\Controllers\StripeController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\StripeWebhookController;
 use App\Http\Controllers\ParticipationController;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\App;
+
+// Valodas
+Route::get('/lang/{locale}', function ($locale) {
+    // Pārbaudām, vai valoda ir viena no atļautajām
+    if (in_array($locale, ['lv', 'en'])) {
+        Session::put('locale', $locale);
+    }
+    return redirect()->back();
+})->name('lang.switch');
+
 
 // Home route
 Route::get('/', function () {

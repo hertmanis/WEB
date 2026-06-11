@@ -18,24 +18,38 @@
             </a>
         </div>
 
-        <div class="flex space-x-4 ml-auto">
-            <a href="{{ url('/profile') }}" class="text-gray-600 hover:text-gray-900 transition duration-300">Profils</a>
+        <div class="flex space-x-4 ml-auto items-center">
+            <a href="{{ url('/profile') }}" class="text-gray-600 hover:text-gray-900 transition duration-300">
+                {{ __('Profils') }}
+            </a>
 
             @auth
                 @if(Auth::user()->role == 1) 
-                    <a href="{{ url('/practices') }}" class="text-gray-600 hover:text-gray-900 transition duration-300">Grafiks</a>
-                    <a href="{{ route('player.payments') }}" class="text-gray-600 hover:text-gray-900 transition duration-300">Maksājumi</a>
+                    <a href="{{ url('/practices') }}" class="text-gray-600 hover:text-gray-900 transition duration-300">{{ __('Grafiks') }}</a>
+                    <a href="{{ route('player.payments') }}" class="text-gray-600 hover:text-gray-900 transition duration-300">{{ __('Maksājumi') }}</a>
                 @elseif(Auth::user()->role == 0) 
-                    <a href="{{ url('/manage-team') }}" class="text-gray-600 hover:text-gray-900 transition duration-300">Pārvaldīt komandu</a>
-                    <a href="{{ url('/practices') }}" class="text-gray-600 hover:text-gray-900 transition duration-300">Grafiks</a>
-                    <a href="{{ route('coach.payments') }}" class="text-gray-600 hover:text-gray-900 transition duration-300">Maksājumi</a>
+                    <a href="{{ url('/manage-team') }}" class="text-gray-600 hover:text-gray-900 transition duration-300">{{ __('Pārvaldīt komandu') }}</a>
+                    <a href="{{ url('/practices') }}" class="text-gray-600 hover:text-gray-900 transition duration-300">{{ __('Grafiks') }}</a>
+                    <a href="{{ route('coach.payments') }}" class="text-gray-600 hover:text-gray-900 transition duration-300">{{ __('Maksājumi') }}</a>
                 @endif
             @endauth
 
+            <div class="flex space-x-2 text-sm font-semibold px-3 border-l border-r border-gray-300 mx-2 items-center">
+                @if(app()->getLocale() === 'lv')
+                    <span class="text-blue-600 font-bold">LV</span>
+                    <span class="text-gray-300">|</span>
+                    <a href="{{ route('lang.switch', 'en') }}" class="text-gray-500 hover:text-gray-900 transition duration-300">ENG</a>
+                @else
+                    <a href="{{ route('lang.switch', 'lv') }}" class="text-gray-500 hover:text-gray-900 transition duration-300">LV</a>
+                    <span class="text-gray-300">|</span>
+                    <span class="text-blue-600 font-bold">ENG</span>
+                @endif
+            </div>
+
             <form method="POST" action="{{ route('logout') }}">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-                    Izrakstīties
+                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition duration-300">
+                    {{ __('Izrakstīties') }}
                 </button>
             </form>
         </div>
