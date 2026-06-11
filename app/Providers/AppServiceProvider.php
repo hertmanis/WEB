@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
     {
         // Enforce string length to 191 characters for MySQL
        
-
+        Schema::disableForeignKeyConstraints();
         // Force logout on every visit to reset the session (optional)
         if (Auth::check()) {
             Auth::logout();
