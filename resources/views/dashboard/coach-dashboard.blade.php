@@ -26,10 +26,10 @@
                             Kopēt kodu
                         </button>
                     </div>
-                    <p class="text-sm text-gray-500 mt-2">Dalies ar šo kodu, lai spēlētāji varētu pievienoties komandai.</p>
+                    <p class="text-sm text-gray-500 mt-2">Dalies ar šo kodu, lai spēlētāji varētu pievienoties komandai</p>
                 </div>
             @else
-                <p class="text-red-600 mt-6 font-medium">Jums vēl nav pievienota komanda.</p>
+                <p class="text-red-600 mt-6 font-medium">Jums vēl nav pievienota komanda</p>
             @endif
         </div>
     </div>

@@ -14,9 +14,9 @@ return new class extends Migration
     Schema::create('payments', function (Blueprint $table) {
         $table->id();
         $table->string('description');
-        $table->integer('amount'); // in cents
+        $table->integer('amount'); // centos
         $table->boolean('paid')->default(false);
-        $table->foreignId('created_by')->constrained('users'); // Coach who created it
+        $table->foreignId('created_by')->constrained('users'); // Treneris kurs izveidoja
         $table->timestamps();
     });
 }

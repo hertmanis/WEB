@@ -7,41 +7,46 @@ use Illuminate\Http\Request;
 class StripeController extends Controller
 {
     public function checkout(Request $request)
-{
-    $request->validate([
-        'amount' => 'required|numeric|min:1',
-        'description' => 'required|string|max:255',
-    ]);
+    {
+        // Pārbauda, vai atsūtītā summa un apraksts ir pareizi ievadīti
+        $request->validate([
+            'amount' => 'required|numeric|min:1',
+            'description' => 'required|string|max:255',
+        ]);
 
-    Stripe::setApiKey(env('STRIPE_SECRET'));
+        // Uzstāda slepeno Stripe atslēgu, ko paņem no .env faila
+        Stripe::setApiKey(env('STRIPE_SECRET'));
 
-    $session = Session::create([
-        'payment_method_types' => ['card'],
-        'line_items' => [[
-            'price_data' => [
-                'currency' => 'eur',
-                'product_data' => [
-                    'name' => $request->description,
+        // Izveido jaunu Stripe maksājuma sesiju ar padotajiem datiem
+        $session = Session::create([
+            'payment_method_types' => ['card'], // Atļauj tikai bankas kartes
+            'line_items' => [[
+                'price_data' => [
+                    'currency' => 'eur', 
+                    'product_data' => [
+                        'name' => $request->description, // Maksājuma apraksts
+                    ],
+                    'unit_amount' => $request->amount * 100,
                 ],
-                'unit_amount' => $request->amount * 100, // cents
-            ],
-            'quantity' => 1,
-        ]],
-        'mode' => 'payment',
-        'success_url' => route('payment.success'),
-        'cancel_url' => route('payment.cancel'),
-    ]);
+                'quantity' => 1, // Daudzums - viena reize
+            ]],
+            'mode' => 'payment', // Parastais vienreizējais maksājuma režīms
+            // Adreses, kur lietotāju pārmest atpakaļ pēc sistēmas darbības
+            'success_url' => route('payment.success'), // Ja viss veiksmīgi
+            'cancel_url' => route('payment.cancel'),   // Ja lietotājs atceļ
+        ]);
 
-    return redirect($session->url);
-}
+        // Pārvirza lietotāju uz ģenerēto Stripe maksājumu lapu internetā
+        return redirect($session->url);
+    }
 
-    // Success URL handler after successful payment
+    // Atver skatu, kad maksājums ir veiksmīgi pabeigts
     public function success()
     {
         return view('dashboard.payment.success');
     }
 
-    // Cancel URL handler if payment is canceled
+    // Atver skatu, ja maksājums tika pārtraukts vai atcelts
     public function cancel()
     {
         return view('dashboard.payment.cancel');

@@ -39,9 +39,7 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Izbeidz migrācijas
-     */
+
     public function down(): void
     {
         Schema::dropIfExists('users');

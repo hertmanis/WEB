@@ -6,28 +6,28 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
     /**
-     * Run the migrations.
+     * Papildina tabulu ar jaunām kolonnām (php artisan migrate)
      */
     public function up()
     {
+        
         Schema::table('users', function (Blueprint $table) {
-            // Add a nullable team_id column to reference teams. It is nullable in case a user is not assigned to a team.
+            // Pieliek jaunu kolonnu team_id uzreiz aiz lietotāja
+
             $table->unsignedBigInteger('team_id')->nullable()->after('id');
 
-            // Define foreign key constraint.
+            // Nodefinē ārējo atslēgu , kas saista šo kolonnu ar 'teams' tabulas 'id' kolonnu
             $table->foreign('team_id')
                   ->references('id')->on('teams')
-                  ->onDelete('cascade');  // When a team is deleted, its users can be deleted or set to null (adjust as needed)
+                  ->onDelete('cascade');  // Ja izdzēš komandu, automātiski izdzēšas arī visi piesaistītie lietotāji
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
+
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            // Drop the foreign key and column
+          
             $table->dropForeign(['team_id']);
             $table->dropColumn('team_id');
         });

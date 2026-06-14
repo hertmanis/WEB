@@ -24,34 +24,42 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // Atrod tukšo kalendāra div elementu
             const calendarEl = document.getElementById('calendar');
 
+            // Inicializē kalendāru un uzstāda tā opcijas
             const calendar = new FullCalendar.Calendar(calendarEl, {
-                // Dinamiski iestatām aplikācijas valodu kalendāram (lv vai en)
+                // Paņem pašreizējo sistēmas valodu (lv vai en)
                 locale: '{{ app()->getLocale() }}', 
-                initialView: 'dayGridMonth',
+                initialView: 'dayGridMonth', // Noklusējuma skats ir mēnesis
                 headerToolbar: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                    left: 'prev,next today', // Pogas kreisajā pusē iepriekšējais, nākamais, šodiena
+                    center: 'title',         // Vidū rādīs mēneša/nedēļas nosaukumu
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay' // Skatu pārslēdzēji labajā pusē
                 },
-                // Šīs pogas FullCalendar pārtulkos pats, pateicoties locales-all skriptam un mainīgajam locale
+                
+                // Pārveidoj Laravel atsūtītos treniņu datus par JSON masīvu, ko saprot FullCalendar
                 events: {!! json_encode($practices->map(function($practice) {
                     return [
                         'title' => $practice->title,
                         'start' => $practice->scheduled_at,
                         'description' => $practice->description,
                         'id' => $practice->id,
+                        // Ja tips ir spele, krāso sarkanu, ja treniņš - zilu 
                         'backgroundColor' => $practice->type === 'spele' ? '#ef4444' : '#3b82f6',
                         'textColor' => '#ffffff'
                     ];
                 })) !!},
+                
+                // Kas notiek, kad uzklikšķina uz kāda pasākuma kalendārā
                 eventClick: function(info) {
                     const practiceId = info.event.id;
+                    // Pārmet lietotāju uz konkrētā treniņa detaļu lapu
                     window.location.href = `/practices/${practiceId}`; 
                 }
             });
 
+            // Palaiž un uzzīmē kalendāru ekrānā
             calendar.render();
         });
     </script>
@@ -65,10 +73,11 @@
     </div>
 
     <script>
+        // Funkcija, ar kuru var smuki parādīt uzlecošo logu ar vajadzīgo tekstu
         function showInfoModal(content) {
             const modal = document.getElementById('infoModal');
             document.getElementById('infoModalContent').innerHTML = content;
-            modal.classList.remove('hidden');
+            modal.classList.remove('hidden'); // Noņem 'hidden' klasi, lai logs kļūtu redzams
         }
     </script>
 @endsection

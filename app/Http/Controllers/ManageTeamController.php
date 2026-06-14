@@ -10,32 +10,38 @@ class ManageTeamController extends Controller
 {
     public function index()
     {
+        // Paņem pašreizējo ielogojušos treneri
         $coach = Auth::user();
 
+        // Ja trenerim vispār ir komanda, tad salasa visus tās biedrus
         if ($coach->team) {
-            // Fetch all users (both players and coach) in the same team
+            // Atlasa no datubāzes tos lietotājus, kam team_id sakrīt ar trenera komandas ID
             $teamMembers = User::where('team_id', $coach->team->id)->get();
         } else {
-            $teamMembers = collect(); // Empty collection
+            // Ja komandas nav, uztaisa tukšu kolekciju, lai lapa nemet kļūdu
+            $teamMembers = collect(); 
         }
 
+        // Atdod biedru sarakstu uz skatu
         return view('dashboard.coach.manage-team', compact('teamMembers'));
     }
 
     public function removeMember($id)
-{
-    $user = Auth::user();
-    $member = User::findOrFail($id);
+    {
+        // Atrod treneri un spēlētāju pēc viņa ID
+        $user = Auth::user();
+        $member = User::findOrFail($id);
 
-    // Pārbauda, vai dalībnieks pieder pie trenera komandas
-    if ($member->team_id !== $user->team_id) {
-        abort(403, 'Jums nav atļauts dzēst šo spēlētāju.');
+        // Pārbauda, vai spēlētājs tiešām ir šī trenera komandā, lai nevar izdzēst svešu
+        if ($member->team_id !== $user->team_id) {
+            abort(403, 'Jums nav atļauts dzēst šo spēlētāju.');
+        }
+
+        // Noņem spēlētājam komandas ID un saglabā izmaiņas datubāzē
+        $member->team_id = null;
+        $member->save();
+
+        // Pārlādē lapu un parāda, ka viss kārtībā
+        return redirect()->back()->with('success', 'Spēlētājs tika dzēsts no komandas.');
     }
-
-    // Noņem lietotāju no komandas
-    $member->team_id = null;
-    $member->save();
-
-    return redirect()->back()->with('success', 'Spēlētājs tika dzēsts no komandas.');
-}
 }
