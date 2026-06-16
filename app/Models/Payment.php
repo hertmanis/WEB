@@ -9,20 +9,22 @@ class Payment extends Model
 {
     use HasFactory;
 
+    
     protected $fillable = [
         'amount',
         'description',
         'created_by',
-        'team_id',   // Pievieno team_id, lai varētu masveidā aizpildīt
-        'paid',      // Pievieno paid, lai varētu atzīmēt apmaksu
+        'team_id',   
+        'paid',      
     ];
     
-    // Vari pievienot arī attiecības, ja vajadzēs:
+    // Relācija Katrs maksājums ir piesaistīts vienai konkrētai komandai
     public function team()
     {
         return $this->belongsTo(Team::class);
     }
     
+    // Relācija Katru maksājumu ir izveidojis kāds konkrēts lietotājs piemēram treneris
     public function creator()
     {
         return $this->belongsTo(User::class, 'created_by');

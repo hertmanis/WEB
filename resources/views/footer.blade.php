@@ -37,7 +37,7 @@
     <hr class="my-6 border-gray-600">
     
     <p class="text-center text-sm text-gray-400">
-      &copy; {{ date('Y') }} TeamManager. Visas tiesības aizsargātas.
+      &copy; {{ date('Y') }} TeamManager.
     </p>
   </div>
 </footer>

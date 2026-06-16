@@ -10,23 +10,25 @@ class Team extends Model
 {
     use HasFactory;
 
-    // Define which attributes are mass assignable
+    // Lauki kurus drīkst aizpildīt masveidā
     protected $fillable = ['name', 'team_code'];
 
     /**
-     * Automatically generate a unique team_code when creating a team.
+        * Automātiski ģenerē unikālu komandas kodu pirms komandas izveides datubāzē
      */
     protected static function boot()
     {
         parent::boot();
 
+        // Notikums kas izpildās tieši pirms jauna ieraksta saglabāšanas datubāzē
         static::creating(function ($team) {
-            $team->team_code = strtoupper(Str::random(6)); // Generates a 6-character uppercase code
+            // Automātiski uzģenerē unikālu 6 zīmju kodu ar lielajiem burtiem
+            $team->team_code = strtoupper(Str::random(6)); 
         });
     }
 
     /**
-     * Get all users that belong to this team.
+     * Relācija Vienai komandai var piederēt daudzi lietotāji spēlētāji un treneri
      */
     public function users()
     {
